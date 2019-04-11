@@ -4,8 +4,8 @@
 * @organization: Psicografici
 * @organization url: https://github.com/Psicografici
 * @author: Bradley-D
-* @author url: https://gist.github.com/Bradley-D
-* @modifyby: Tiex84 - https://gist.github.com/Tiex84
+* @author url: https://github.com/Bradley-D
+* @modifyby: Tiex84 - https://github.com/Tiex84
 */
 
 get_option( 'woocommerce_shop_page_id' ); 
