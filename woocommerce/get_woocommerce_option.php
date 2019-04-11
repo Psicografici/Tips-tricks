@@ -23,7 +23,15 @@ function get_shop_featured_image() {
   if( is_shop() ) {
     $shop = get_option( 'woocommerce_shop_page_id' );
     if( has_post_thumbnail( $shop ) ) {
-      echo get_the_post_thumbnail( $shop );
+
+        // Echo image like element img //
+        echo get_the_post_thumbnail( $shop );
+        
+        // echo div element with background cover // 
+        $height = "350px";
+        $size = "cover";
+        echo "<div style='background:url(".get_the_post_thumbnail_url( $shop ).") center center no-repeat; background-size: ".$size."; height:".$height.";'></div>";
+
     }
   }
 }
