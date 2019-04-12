@@ -1,0 +1,51 @@
+FACEBOOK EVENTO STANDARD - ADD TO CART
+<script>
+    fbq('track', 'AddToCart', {
+        content_ids: 'id1234', //this is just an example. You should replace it with actual value
+        content_type: 'product', //this is just an example. You should replace it with actual value
+        content_name: 'Product name', //for single item
+        value: 30,
+        currency: 'USD'
+    });
+</script>
+FACEBOOK EVENTO STANDARD - ADD TO WISHLIST
+<script>
+    fbq('track', 'AddToWishlist', {
+        content_ids: 'id1234', //this is just an example. You should replace it with actual value
+        content_category: 'category', //this is just an example. You should replace it with actual value
+        content_name: 'Product name', //for single item
+        value: 30, //this is just an example. You should replace it with actual value
+        currency: 'USD' //this is just an example. You should replace it with actual value
+    });
+</script>
+FACEBOOK EVENTO STANDARD - INITIATE CHECKOUT
+<script>
+    fbq('track', 'InitiateCheckout', {
+        content_ids: 'id1234', //this is just an example. You should replace it with actual value
+        content_category: 'category', //this is just an example. You should replace it with actual value
+        content_name: 'name', //for single item
+        value: 30, //this is just an example. You should replace it with actual value
+        currency: 'USD', //this is just an example. You should replace it with actual value
+        num_items: 4 //this is just an example. You should replace it with actual value
+    });
+</script>
+FACEBOOK EVENTO STANDARD - ADD PAYMENT INFO
+<script>
+    fbq('track', 'AddPaymentInfo', {
+        content_ids: 'id1234', //this is just an example. You should replace it with actual value
+        content_category: 'category', //this is just an example. You should replace it with actual value
+        value: 30, //this is just an example. You should replace it with actual value
+        currency: 'USD'
+    });
+</script>
+FACEBOOK EVENTO STANDARD - PURCHASE
+<script>
+    fbq('track', 'Purchase', {
+        content_ids: 'id1234', //this is just an example. You should replace it with actual value
+        content_name: 'name', //for single item
+        content_type: 'product',
+        value: 30, //this is just an example. You should replace it with actual value
+        currency: 'USD', //this is just an example. You should replace it with actual value
+        num_items: 4 //this is just an example. You should replace it with actual value
+    });
+</script>
