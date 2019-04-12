@@ -1,0 +1,173 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2017-09-22 14:06:08",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7580764/versions/0",
+        "accountId": "134236083",
+        "containerId": "7580764",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7580764",
+            "accountId": "134236083",
+            "containerId": "7580764",
+            "name": "Template test",
+            "publicId": "GTM-5TTWT5X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1506089160618",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7580764/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "15",
+                "name": "GA - Event - Form Contatti",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "Form Contatti"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "Compilazione Form Contatti"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-11111-1"
+                    }
+                ],
+                "fingerprint": "1506089160618",
+                "firingTriggerId": [
+                    "16"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "16",
+                "name": "Form Contatti",
+                "type": "FORM_SUBMISSION",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Form ID}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "ninja_forms_form_1"
+                            }
+                        ]
+                    }
+                ],
+                "autoEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/contatti"
+                            }
+                        ]
+                    }
+                ],
+                "waitForTags": {
+                    "type": "BOOLEAN",
+                    "value": "true"
+                },
+                "checkValidation": {
+                    "type": "BOOLEAN",
+                    "value": "true"
+                },
+                "waitForTagsTimeout": {
+                    "type": "TEMPLATE",
+                    "value": "2000"
+                },
+                "uniqueTriggerId": {
+                    "type": "TEMPLATE"
+                },
+                "fingerprint": "1506089074475"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "EVENT",
+                "name": "Event"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "FORM_ELEMENT",
+                "name": "Form Element"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "FORM_ID",
+                "name": "Form ID"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7580764/versions/0?apiLink=version"
+    }
+}

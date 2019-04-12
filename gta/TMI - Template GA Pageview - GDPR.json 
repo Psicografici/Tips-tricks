@@ -1,0 +1,703 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-04-27 15:05:26",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7609166/versions/0",
+        "accountId": "134236083",
+        "containerId": "7609166",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7609166",
+            "accountId": "134236083",
+            "containerId": "7609166",
+            "name": "Test GDPR",
+            "publicId": "GTM-P67JC7C",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1524841296609",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7609166/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "tagId": "45",
+                "name": "CookieBot GDPR Consent",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script id=\"Cookiebot\" src=\"https://consent.cookiebot.com/uc.js?cbid={{CookieBotId}}\" type=\"text/javascript\"></script>\n<script>\nfunction CookiebotCallback_OnAccept() {\n    if ((Cookiebot.consent.preferences) && ({{CookieConsent.preferences}} != \"true\"))\n\t\tdataLayer.push({'event':'cookieconsent_preferences'});\n    if ((Cookiebot.consent.statistics) && {{CookieConsent.statistics}} != \"true\")\n\t\tdataLayer.push({'event':'cookieconsent_statistics'});\n    if ((Cookiebot.consent.marketing) && {{CookieConsent.marketing}} != \"true\")\n\t\tdataLayer.push({'event':'cookieconsent_marketing'});\n}\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1524841169464",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_LOAD"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "tagId": "46",
+                "name": "CookieBot GDPR Consent Privacy",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n//INSERIRE L'ID DELL'ELEMENTO CORRETTO AL POSTO DI bodycontent\nvar contentPlaceholder = document.getElementById(\"bodycontent\");\nvar cookieDeclarationScript = document.createElement(\"script\");\ncookieDeclarationScript.type = \"text/javascript\";\ncookieDeclarationScript.id = \"CookieDeclaration\";\ncookieDeclarationScript.src = \"https://consent.cookiebot.com/{{CookieBotId}}/cd.js\";\ncontentPlaceholder.appendChild(cookieDeclarationScript);\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1524841169464",
+                "firingTriggerId": [
+                    "65"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "tagId": "47",
+                "name": "GA - Pageview - Nome Sito",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "gaSettings",
+                        "value": "{{GA Pageview}}"
+                    }
+                ],
+                "fingerprint": "1524841296601",
+                "firingTriggerId": [
+                    "70",
+                    "2147479553"
+                ],
+                "blockingTriggerId": [
+                    "74"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "65",
+                "name": "Pageview Privacy",
+                "type": "PAGEVIEW",
+                "filter": [
+                    {
+                        "type": "STARTS_WITH",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/privacy-policy/"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169458"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "66",
+                "name": "cookieconsent_marketing",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cookieconsent_marketing"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169458"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "72",
+                "name": "cookieconsent_marketing Non Accettato",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".*"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{CookieConsent.marketing}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841312349"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "68",
+                "name": "cookieconsent_preferences",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cookieconsent_preferences"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169460"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "73",
+                "name": "cookieconsent_preferences Non Accettato",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".*"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{CookieConsent.preferences}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841325460"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "70",
+                "name": "cookieconsent_statistics",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cookieconsent_statistics"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169461"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "triggerId": "74",
+                "name": "cookieconsent_statistics Non Accettato",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".*"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{CookieConsent.statistics}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841340221"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "65",
+                "name": "CookieBotId",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "111111"
+                    }
+                ],
+                "fingerprint": "1524841517968",
+                "formatValue": {}
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "61",
+                "name": "CookieConsent",
+                "type": "k",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decodeCookie",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "CookieConsent"
+                    }
+                ],
+                "fingerprint": "1524841169459"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "62",
+                "name": "CookieConsent.marketing",
+                "type": "remm",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "input",
+                        "value": "{{CookieConsent}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "fullMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "replaceAfterMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "ignoreCase",
+                        "value": "true"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "map",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "marketing:true"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "marketing:false"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "false"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169459"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "63",
+                "name": "CookieConsent.preferences",
+                "type": "remm",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "input",
+                        "value": "{{CookieConsent}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "fullMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "replaceAfterMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "ignoreCase",
+                        "value": "true"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "map",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "preferences:true"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "preferences:false"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "false"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169460"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "64",
+                "name": "CookieConsent.statistics",
+                "type": "remm",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "input",
+                        "value": "{{CookieConsent}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "fullMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "replaceAfterMatch",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "ignoreCase",
+                        "value": "true"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "map",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "statistics:true"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "key",
+                                        "value": "statistics:false"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "false"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1524841169462"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "67",
+                "name": "GA Pageview",
+                "type": "gas",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useHashAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decorateFormsAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "{{gaID}}"
+                    }
+                ],
+                "fingerprint": "1524841296599"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "66",
+                "name": "gaID",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "UA-111111-1"
+                    }
+                ],
+                "fingerprint": "1524841296598"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7609166/versions/0?apiLink=version"
+    }
+}

@@ -1,0 +1,234 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-03-22 15:55:07",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/8676736/versions/0",
+        "accountId": "134236083",
+        "containerId": "8676736",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/8676736",
+            "accountId": "134236083",
+            "containerId": "8676736",
+            "name": "Template Irene",
+            "publicId": "GTM-P35JRNR",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1521733933598",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/8676736/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "1",
+                "name": "GA - Transaction",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "fieldsToSet",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "fieldName",
+                                        "value": "hitCallback"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{JS - hitcallback set transaction cookie}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "gaSettings",
+                        "value": "{{GA Pageview}}"
+                    }
+                ],
+                "fingerprint": "1521733933599",
+                "firingTriggerId": [
+                    "6"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "triggerId": "6",
+                "name": "Transazione no doppia",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "gtm4wp.orderCompletedEEC"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{JS - transactionId presente nel cookie}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "blockTransaction"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1521733933289"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "4",
+                "name": "JS - hitcallback set transaction cookie",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function()\n{\n  \t// If isn't there a transaction ID, we don't need to do anything.\n\tif(!{{transactionId}})\n    \treturn;\n  \n\treturn function(){    \n\t\tvar transactionId = {{transactionId}};\n\t\tif({{cookie user transactions}}){\n \t\t\tvar trackedTransactions = {{cookie user transactions}}.split(\"|\");\n   \t\t\tif(trackedTransactions.indexOf(transactionId)==-1){         \n          \t\ttrackedTransactions.push(transactionId);\n\t\t\t\tvar d = new Date();\n    \t\t\td.setTime(d.getTime() + (180*24*60*60*1000));\n    \t\t\tvar expires = \"expires=\"+d.toUTCString();           \n    \t\t\tdocument.cookie = \"transactions=\" + trackedTransactions.join('|') + \"; \" + expires;\n        \t}\n\t\t}else{\n      \t\tvar trackedTransactions = [];\n      \t\ttrackedTransactions.push(transactionId);\n  \t\t\tvar d = new Date();\n    \t\td.setTime(d.getTime() + (180*24*60*60*1000));\n    \t\tvar expires = \"expires=\"+d.toUTCString();           \n    \t\tdocument.cookie = \"transactions=\" + trackedTransactions.join('|') + \"; \" + expires;\n\t\t}\n\t}\n}"
+                    }
+                ],
+                "fingerprint": "1521733933112"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "1",
+                "name": "JS - transactionId presente nel cookie",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function()\n{\n\tif(!{{transactionId}})\n       return;\n\n    var transactionId = {{transactionId}};\t\n\tif({{cookie user transactions}}){\n  \t\tvar trackedTransactions = {{cookie user transactions}}.split(\"|\");\n    \tif(trackedTransactions.indexOf(transactionId)>-1)\n        {\n\t\t\treturn \"blockTransaction\";\n        }\n    }\n}"
+                    }
+                ],
+                "fingerprint": "1521733932489"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "3",
+                "name": "cookie user transactions",
+                "type": "k",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decodeCookie",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "transactions"
+                    }
+                ],
+                "fingerprint": "1521733932886"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "2",
+                "name": "transactionId",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.purchase.actionField.id"
+                    }
+                ],
+                "fingerprint": "1521733932690"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/8676736/versions/0?apiLink=version"
+    }
+}

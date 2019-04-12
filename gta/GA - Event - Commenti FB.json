@@ -1,0 +1,243 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-01-02 20:52:17",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7580764/versions/0",
+        "accountId": "134236083",
+        "containerId": "7580764",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7580764",
+            "accountId": "134236083",
+            "containerId": "7580764",
+            "name": "Template test",
+            "publicId": "GTM-5TTWT5X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1514926322330",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7580764/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "46",
+                "name": "GA - Event - Commenti FB",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "{{socialNetwork}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{socialAction}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{socialTarget}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-12345-6"
+                    }
+                ],
+                "fingerprint": "1514926322330",
+                "firingTriggerId": [
+                    "39"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "45",
+                "name": "cHTML – Facebook Comment Listener",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\nFB.Event.subscribe('comment.create', function(commentResponse) {\nvar targetUrl = commentResponse.href;\nwindow.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({\n'event': 'socialInteraction',\n'socialNetwork': 'Facebook',\n'socialAction': 'Comment',\n'socialTarget': targetUrl\n});\n});\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1514926143949",
+                "firingTriggerId": [
+                    "38"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "38",
+                "name": "Finestra caricata",
+                "type": "WINDOW_LOADED",
+                "fingerprint": "1514926131845"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "39",
+                "name": "socialInteraction",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "socialInteraction"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1514926229381"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "26",
+                "name": "socialAction",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "socialAction"
+                    }
+                ],
+                "fingerprint": "1514926174683"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "27",
+                "name": "socialNetwork",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "socialNetwork"
+                    }
+                ],
+                "fingerprint": "1514926196415"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "28",
+                "name": "socialTarget",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "socialTarget"
+                    }
+                ],
+                "fingerprint": "1514926209025"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7580764/versions/0?apiLink=version"
+    }
+}

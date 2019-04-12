@@ -1,0 +1,255 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-07-20 10:44:03",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/8963329/versions/0",
+        "accountId": "134236083",
+        "containerId": "8963329",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/8963329",
+            "accountId": "134236083",
+            "containerId": "8963329",
+            "name": "demo tag manager prova",
+            "publicId": "GTM-MP27GLZ",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1532083435176",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/8963329/workspaces?apiLink=container"
+        },
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "variableId": "10",
+                "name": "GA - Pageview",
+                "type": "gas",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "fieldsToSet",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "fieldName",
+                                        "value": "customTask"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{JS - Client ID}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useHashAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decorateFormsAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "dimension",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "index",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "dimension",
+                                        "value": "{{User ID}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "index",
+                                        "value": "3"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "dimension",
+                                        "value": "{{JS - Session ID}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "index",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "dimension",
+                                        "value": "{{JS - Hit Timestamp}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-111111-1"
+                    }
+                ],
+                "fingerprint": "1532083435176"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "variableId": "6",
+                "name": "JS - Client ID",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\n// modifica il numero di \"customDimensionIndex\" con l'indice della dimensione personalizzata che ti è stato assegnato \nvar customDimensionIndex = 2;\nreturn function(model) {\nmodel.set('dimension' + customDimensionIndex, model.get('clientId'));\n}\n}"
+                    }
+                ],
+                "fingerprint": "1532083190823"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "variableId": "8",
+                "name": "JS - Hit Timestamp",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\n// Get local time as ISO string with offset at the end\nvar now = new Date();\nvar tzo = -now.getTimezoneOffset();\nvar dif = tzo >= 0 ? '+' : '-';\nvar pad = function(num) {\nvar norm = Math.abs(Math.floor(num));\nreturn (norm < 10 ? '0' : '') + norm;\n};\nreturn now.getFullYear()\n+ '-' + pad(now.getMonth()+1)\n+ '-' + pad(now.getDate())\n+ 'T' + pad(now.getHours())\n+ ':' + pad(now.getMinutes())\n+ ':' + pad(now.getSeconds())\n+ '.' + pad(now.getMilliseconds())\n+ dif + pad(tzo / 60)\n+ ':' + pad(tzo % 60);\n}"
+                    }
+                ],
+                "fingerprint": "1532083270797"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "variableId": "7",
+                "name": "JS - Session ID",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\nreturn new Date().getTime() + '.' + Math.random().toString(36).substring(5);\n}"
+                    }
+                ],
+                "fingerprint": "1532083213633"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "variableId": "9",
+                "name": "User ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "User ID"
+                    }
+                ],
+                "fingerprint": "1532083302588"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8963329",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/8963329/versions/0?apiLink=version"
+    }
+}

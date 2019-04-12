@@ -1,0 +1,187 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2019-03-13 13:33:11",
+    "containerVersion": {
+        "path": "accounts/4410898579/containers/11279090/versions/0",
+        "accountId": "4410898579",
+        "containerId": "11279090",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/4410898579/containers/11279090",
+            "accountId": "4410898579",
+            "containerId": "11279090",
+            "name": "Iubenda",
+            "publicId": "GTM-M4WCBD8",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1552302306706",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4410898579/containers/11279090/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "tagId": "1",
+                "name": "Iubenda",
+                "type": "html",
+                "priority": {
+                    "type": "INTEGER",
+                    "value": "999999"
+                },
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script type=\"text/javascript\">\n var _iub = _iub || [];\n _iub.csConfiguration = {\n cookiePolicyId: XXX,\n siteId: YYY,\n lang: \"it\",\n callback: {\n onConsentGiven: function(){\n dataLayer.push({'event': 'iubenda_consent_given'});\n }\n }\n };\n (function (w, d) {\n var loader = function () { var s = d.createElement(\"script\"), tag = d.getElementsByTagName(\"script\")[0]; s.src = \"//cdn.iubenda.com/cookie_solution/iubenda_cs.js\"; tag.parentNode.insertBefore(s, tag); };\n if (w.addEventListener) { w.addEventListener(\"load\", loader, false); } else if (w.attachEvent) { w.attachEvent(\"onload\", loader); } else { w.onload = loader; }\n })(window, document);\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1552302306706",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "triggerId": "5",
+                "name": "no accetto cookie law",
+                "type": "PAGEVIEW",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{cookie iubenda}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "\"consent\":true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1552302364603"
+            },
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "triggerId": "6",
+                "name": "no accetto cookie law - universale",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "MATCH_REGEX",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".*"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{cookie iubenda}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "\"consent\":true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1552302384714"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "variableId": "1",
+                "name": "cookie iubenda",
+                "type": "k",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decodeCookie",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "_iub_cs-XXX"
+                    }
+                ],
+                "fingerprint": "1552302303964"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "4410898579",
+                "containerId": "11279090",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/4410898579/containers/11279090/versions/0?apiLink=version"
+    }
+}

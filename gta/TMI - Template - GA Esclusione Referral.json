@@ -1,0 +1,125 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2017-10-17 09:43:56",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7609166/versions/0",
+        "accountId": "134236083",
+        "containerId": "7609166",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7609166",
+            "accountId": "134236083",
+            "containerId": "7609166",
+            "name": "Test Matteo",
+            "publicId": "GTM-P67JC7C",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1508233317429",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7609166/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "tagId": "7",
+                "name": "GA - Pageview - Nome Sito",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "fieldsToSet",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "fieldName",
+                                        "value": "referrer"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{JS - Esclusione Referral}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-11111-1"
+                    }
+                ],
+                "fingerprint": "1508233335723",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "variableId": "2",
+                "name": "JS - Esclusione Referral",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\n   var referrals = [\n     'sito1.it',\n     'sito2.it',\n     'sito3.it',\n     'sito4.it'\n   ];\n   var domainname = new RegExp('https?://([^/:]+)').exec({{Referrer}});\n   if (domainname) {\n     for (var i = referrals.length; i--;) {\n        if (new RegExp(referrals[i] + '$').test(domainname[1])) {\n           return null;\n        }\n     }\n   }\n   return {{Referrer}};\n}"
+                    }
+                ],
+                "fingerprint": "1508233317429"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7609166",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7609166/versions/0?apiLink=version"
+    }
+}

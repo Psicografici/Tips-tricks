@@ -1,0 +1,125 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-03-28 14:37:45",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/8676736/versions/0",
+        "accountId": "134236083",
+        "containerId": "8676736",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/8676736",
+            "accountId": "134236083",
+            "containerId": "8676736",
+            "name": "Template Irene",
+            "publicId": "GTM-P35JRNR",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1522247841561",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/8676736/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "8",
+                "name": "GA - Pageview",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "dimension",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "index",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "dimension",
+                                        "value": "{{JS - Hit Timestamp}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-11111-1"
+                    }
+                ],
+                "fingerprint": "1522247856818",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "10",
+                "name": "JS - Hit Timestamp",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function() {\n// Get local time as ISO string with offset at the end\nvar now = new Date();\nvar tzo = -now.getTimezoneOffset();\nvar dif = tzo >= 0 ? '+' : '-';\nvar pad = function(num) {\nvar norm = Math.abs(Math.floor(num));\nreturn (norm < 10 ? '0' : '') + norm;\n};\nreturn now.getFullYear()\n+ '-' + pad(now.getMonth()+1)\n+ '-' + pad(now.getDate())\n+ 'T' + pad(now.getHours())\n+ ':' + pad(now.getMinutes())\n+ ':' + pad(now.getSeconds())\n+ '.' + pad(now.getMilliseconds())\n+ dif + pad(tzo / 60)\n+ ':' + pad(tzo % 60);\n}"
+                    }
+                ],
+                "fingerprint": "1522247811840"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/8676736/versions/0?apiLink=version"
+    }
+}

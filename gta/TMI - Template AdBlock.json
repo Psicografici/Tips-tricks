@@ -1,0 +1,244 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-02-28 11:49:56",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7580764/versions/0",
+        "accountId": "134236083",
+        "containerId": "7580764",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7580764",
+            "accountId": "134236083",
+            "containerId": "7580764",
+            "name": "Template test",
+            "publicId": "GTM-5TTWT5X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1519817328901",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7580764/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "77",
+                "name": "GA - Event - AdBlock",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "AdBlock"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{adBlockDetected}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{Page Path}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "dimension",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "index",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "dimension",
+                                        "value": "{{adBlockDetected}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-1111-1"
+                    }
+                ],
+                "fingerprint": "1519817575902",
+                "firingTriggerId": [
+                    "67"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "78",
+                "name": "cHTML - adBlock",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<div id=\"bottomAd\" style=\"font-size: 2px;\">&nbsp;</div>\n<script>\n    \njQuery(document).ready( function() {\n  window.setTimeout( function() \n  {\n    var bottomad = jQuery('#bottomAd');\n    \n    if (bottomad.length == 1) \n    {\n      if (bottomad.height() == 0) \n      {\n        dataLayer.push({'event': 'ir.adBlock', 'adBlockDetected': '1' });\n      } \n      else \n      {\n        dataLayer.push({'event': 'ir.adBlock', 'adBlockDetected': '0' });\n      }\n    }\n    jQuery(\"#bottomAd\").remove();\n  }, 5);\n});\n\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1519817241247",
+                "firingTriggerId": [
+                    "66"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "66",
+                "name": "All Pages - LOAD READY",
+                "type": "WINDOW_LOADED",
+                "fingerprint": "1519817240870"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "67",
+                "name": "ir.adBlock",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "ir.adBlock"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1519817328901"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "75",
+                "name": "adBlockDetected",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "defaultValue",
+                        "value": "0"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "adBlockDetected"
+                    }
+                ],
+                "fingerprint": "1519817240251"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7580764/versions/0?apiLink=version"
+    }
+}

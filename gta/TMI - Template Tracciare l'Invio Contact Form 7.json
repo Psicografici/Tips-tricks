@@ -1,0 +1,210 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-04-30 15:46:25",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/8676736/versions/0",
+        "accountId": "134236083",
+        "containerId": "8676736",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/8676736",
+            "accountId": "134236083",
+            "containerId": "8676736",
+            "name": "Template Irene",
+            "publicId": "GTM-P35JRNR",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1525102735160",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/8676736/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "30",
+                "name": "Contact Form 7 Listener",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\ndocument.addEventListener( 'wpcf7mailsent', function( event ) {\n window.dataLayer.push({\n \"event\" : \"cf7mailInviata\",\n \"cf7FormId\" : event.detail.contactFormId,\n \"cf7Campi\" : event.detail.inputs\n })\n}); \n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1525102734948",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "31",
+                "name": "GA - Event - Contact Form 7",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "Contact Form 7"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "Form ID: {{CF7 - Form ID}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "Oggetto Email: {{CF7 - Oggetto Email}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-11111-1"
+                    }
+                ],
+                "fingerprint": "1525102872678",
+                "firingTriggerId": [
+                    "27"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "triggerId": "27",
+                "name": "cf7mailInviata",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cf7mailInviata"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1525102734588"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "32",
+                "name": "CF7 - Form ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "cf7FormId"
+                    }
+                ],
+                "fingerprint": "1525102734362"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "31",
+                "name": "CF7 - Oggetto Email",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "cf7Campi.2.value"
+                    }
+                ],
+                "fingerprint": "1525102734092"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/8676736/versions/0?apiLink=version"
+    }
+}

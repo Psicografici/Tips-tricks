@@ -1,0 +1,195 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-05-22 13:35:29",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/8676736/versions/0",
+        "accountId": "134236083",
+        "containerId": "8676736",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/8676736",
+            "accountId": "134236083",
+            "containerId": "8676736",
+            "name": "Template Irene",
+            "publicId": "GTM-P35JRNR",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1526996071867",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/8676736/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "46",
+                "name": "Contact Form 7 Errore Form",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\ndocument.addEventListener( 'wpcf7invalid', function( event ) {\n window.dataLayer.push({\n \"event\" : \"cf7erroreForm\",\n \"cf7FormId\" : event.detail.contactFormId,\n \"cf7Campi\" : event.detail.inputs\n })\n}); \n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1526995361261",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "tagId": "45",
+                "name": "GA - Event - Errore Form",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "Errore Form"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{Criptare Valore Campo Email}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-11111-1"
+                    }
+                ],
+                "fingerprint": "1526995999959",
+                "firingTriggerId": [
+                    "38"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "triggerId": "38",
+                "name": "cf7erroreForm",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "cf7erroreForm"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1526995360744"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "52",
+                "name": "CF7 - Email",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "cf7Campi.1.value"
+                    }
+                ],
+                "fingerprint": "1526996070318"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "variableId": "51",
+                "name": "Criptare Valore Campo Email",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function(){\n\nvar str = {{CF7 - Email}};\n\nvar newString = str.replace(/[a-z,A-Z]/g, \"X\").replace(/[0-9]/g, \"1\");\n\nreturn newString;\n\n}"
+                    }
+                ],
+                "fingerprint": "1526995360555"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "8676736",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/8676736/versions/0?apiLink=version"
+    }
+}
