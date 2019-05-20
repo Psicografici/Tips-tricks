@@ -1,0 +1,36 @@
+$primary:   #369d95;
+$secondary: #d08b7c;
+$gray-dark: #333333;
+$gray:      #565656;
+$light:     #fafafa;
+$white:     #ffffff;
+
+// Colours
+
+$colours: (
+    primary: $primary,  
+    secondary: $secondary,
+    gray-dark: $gray-dark,
+    gray: $gray,     
+    light: $light,
+    white: $white,    
+);
+
+@mixin background-opacity($colour, $opacity: 0.3) {
+    background: $colour; /* The Fallback */
+    background: rgba($colour, $opacity);
+}
+    
+@each $colours, $colour in $colours {
+    
+    .bg-#{$colours} {
+        background-color: $colour;
+    }
+    .text-#{$colours} {
+        color: $colour;
+    }
+    .op-#{$colours} {
+        //background: rgba($colour, 0.2);
+        @include background-opacity($colour, 0.2);
+    }
+}
