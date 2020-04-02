@@ -1,0 +1,178 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-02-14 15:05:01",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7580764/versions/0",
+        "accountId": "134236083",
+        "containerId": "7580764",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7580764",
+            "accountId": "134236083",
+            "containerId": "7580764",
+            "name": "Template test",
+            "publicId": "GTM-5TTWT5X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1518620635355",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7580764/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "61",
+                "name": "GA - Event - Vimeo Tracking",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "Video"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{Vimeo - Video Action}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{Vimeo - Video Name}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-1111111-1"
+                    }
+                ],
+                "fingerprint": "1518620622806",
+                "firingTriggerId": [
+                    "50"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "60",
+                "name": "cHTML - Vimeo Tracking",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script type=\"text/javascript\" id=\"gtm-vimeo-tracking\">\n;(function(document, window, config) {\n\n'use strict';\n if (navigator.userAgent.match(/MSIE [678]\\./gi)) return;\n\nconfig = cleanConfig(config);\n\nvar handle = getHandler(config.syntax);\n\nif (document.readyState !== 'loading') {\n\ninit();\n\n} else {\n\ndocument.addEventListener('DOMContentLoaded', function() {\n\ninit();\n document.addEventListener('load', init, true);\n\n});\n\n}\n\nfunction init() {\n\nvar videos = filter_(selectAllTags_('iframe'), isVimeo);\n\nif (!videos.length) return;\n\nloadApi(function() {\n\nforEach_(videos, listenTo);\n\n});\n\n}\n\nfunction isVimeo(el) {\n\nreturn el.src.indexOf('player.vimeo.com/video/') > -1;\n\n}\n\nfunction loadApi(callback) {\n\nif (isUndefined_(window.Vimeo)) {\n\nloadScript('https://player.vimeo.com/api/player.js', callback);\n\n} else {\n\ncallback();\n\n}\n\n}\n\nfunction listenTo(el) {\n\nif (el.__vimeoTracked) return;\n\nel.__vimeoTracked = true;\n\nvar video = new Vimeo.Player(el);\n var percentages = config._track.percentages;\n var eventNameDict = {\n 'Play': 'play',\n 'Pause': 'pause',\n 'Watch to End': 'ended'\n };\n var cache = {};\n\nvideo.getVideoTitle()\n .then(function(title) {\n\nforEach_(['Play', 'Pause', 'Watch to End'], function(key) {\n\nif (config.events[key]) {\n\nvideo.on(eventNameDict[key], function() {\n\nhandle(key, title);\n\n});\n\n}\n\n});\n\nif (percentages) {\n\nvideo.on('timeupdate', function(evt) {\n\nvar percentage = evt.percent;\n var key;\n\nfor (key in percentages) {\n\nif (percentage >= percentages[key] && !cache[key]) {\n\ncache[key] = true;\n handle(key, title);\n\n}\n\n}\n\n});\n\n}\n\n});\n\n}\n\nfunction cleanConfig(config) {\n\nconfig = extend_({}, {\n events: {\n 'Play': true,\n 'Pause': true,\n 'Watch to End': true\n },\n percentages: {\n each: [],\n every: []\n }\n }, config);\n\nforEach_(['each', 'every'], function(setting) {\n\nvar vals = config.percentages[setting];\n\nif (!isArray_(vals)) vals = [vals];\n\nif (vals) config.percentages[setting] = map_(vals, Number);\n\n});\n\nvar points = [].concat(config.percentages.each);\n\nif (config.percentages.every) {\n\nforEach_(config.percentages.every, function(val) {\n\nvar n = 100 / val;\n var every = [];\n var i;\n\nfor (i = 1; i < n; i++) every.push(val * i);\n\npoints = points.concat(filter_(every, function(val) {\n\nreturn val > 0.0 && val < 100.0;\n\n}));\n\n});\n\n}\n\nvar percentages = reduce_(points, function(prev, curr) {\n\nprev[curr + '%'] = curr / 100.0;\n return prev;\n\n}, {});\n\nconfig._track = {\n percentages: percentages\n };\n\nreturn config;\n\n}\n\nfunction getHandler(syntax) {\n\nsyntax = syntax || {};\n\nvar gtmGlobal = syntax.name || 'dataLayer';\n var uaGlobal = syntax.name || window.GoogleAnalyticsObject || 'ga';\n var clGlobal = '_gaq';\n var dataLayer;\n\nvar handlers = {\n 'gtm': function(state, title) {\n\ndataLayer.push({\n event: 'vimeoTrack',\n attributes: {\n videoAction: state,\n videoName: title\n }\n });\n\n},\n 'cl': function(state, title) {\n\nwindow[clGlobal].push(['_trackEvent', 'Videos', state, title]);\n\n},\n 'ua': function(state, title) {\n\nwindow[uaGlobal]('send', 'event', 'Videos', state, title);\n\n}\n };\n\nswitch(syntax.type) {\n\ncase 'gtm':\n\ndataLayer = window[gtmGlobal] = window[gtmGlobal] || [];\n break;\n\ncase 'ua':\n\nwindow[uaGlobal] = window[uaGlobal] || function() {\n\n(window[uaGlobal].q = window[uaGlobal].q || []).push(arguments);\n\n};\n window[uaGlobal].l = +new Date();\n break;\n\ncase 'cl':\n\nwindow[clGlobal] = window[clGlobal] || [];\n break;\n\ndefault:\n\nif (!isUndefined_(window[gtmGlobal])) {\n\nsyntax.type = 'gtm';\n dataLayer = window[gtmGlobal] = window[gtmGlobal] || [];\n\n} else if (uaGlobal&& !isUndefined_(window[uaGlobal])) {\n\nsyntax.type = 'ua';\n\n} else if (!isUndefined_(window[clGlobal]) && !isUndefined_(window[clGlobal].push)) {\n\nsyntax.type = 'cl';\n\n}\n break;\n }\n\nreturn handlers[syntax.type];\n\n}\n\nfunction extend_() {\n\nvar args = [].slice.call(arguments);\n var dst = args.shift();\n var src;\n var key;\n var i;\n\nfor (i = 0; i < args.length; i++) {\n\nsrc = args[i];\n\nfor (key in src) {\n\ndst[key] = src[key];\n\n}\n\n}\n\nreturn dst;\n\n}\n\nfunction isArray_(o) {\n\nif (Array.isArray_) return Array.isArray_(o);\n\nreturn Object.prototype.toString.call(o) === '[object Array]';\n\n}\n\nfunction forEach_(arr, fn) {\n\nif (Array.prototype.forEach_) return arr.forEach.call(arr, fn);\n\nvar i;\n\nfor (i = 0; i < arr.length; i++) {\n\nfn.call(window, arr[i], i, arr);\n\n}\n\n}\n\nfunction map_(arr, fn) {\n\nif (Array.prototype.map_) return arr.map.call(arr, fn);\n\nvar newArr = [];\n\nforEach_(arr, function(el, ind, arr) {\n\nnewArr.push(fn.call(window, el, ind, arr));\n\n});\n\nreturn newArr;\n\n}\n\n\n\nfunction filter_(arr, fn) {\n\nif (Array.prototype.filter) return arr.filter.call(arr, fn);\n\nvar newArr = [];\n\nforEach_(arr, function(el, ind, arr) {\n\nif (fn.call(window, el, ind, arr)) newArr.push(el);\n\n});\n\nreturn newArr;\n\n}\n\nfunction reduce_(arr, fn, init) {\n\nif (Array.prototype.reduce) return arr.reduce.call(arr, fn, init);\n\nvar result = init;\n var el;\n var i;\n\nfor (i = 0; i < arr.length; i++) {\n\nel = arr[i];\n result = fn.call(window, result, el, arr, i);\n\n}\n\nreturn result;\n\n}\n\nfunction isUndefined_(thing) {\n\nreturn typeof thing === 'undefined';\n\n}\n\nfunction selectAllTags_(tags) {\n\nif (!isArray_(tags)) tags = [tags];\n\nreturn [].slice.call(document.querySelectorAll(tags.join()));\n\n}\n\nfunction loadScript(src, callback) {\n\nvar f, s;\n\nf = document.getElementsByTagName('script')[0];\n s = document.createElement('script');\n s.onload = callCallback;\n s.src = src;\n s.async = true;\n\nf.parentNode.insertBefore(s, f);\n\nfunction callCallback() {\n\nif (callback) {\n\ncallback();\n s.onload = null;\n\n}\n\n}\n\n}\n\n})(document, window, {\n 'events': {\n 'Play': true,\n 'Pause': true,\n 'Watch to End': true\n },\n 'percentages': {\n 'every': 25,\n 'each': [10, 90]\n }\n});\n\n</script>\n"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1518620379509",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "50",
+                "name": "Vimeo Track",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "vimeoTrack"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1518620516536"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "48",
+                "name": "Vimeo - Video Action",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "attributes.videoAction"
+                    }
+                ],
+                "fingerprint": "1518620475919"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "47",
+                "name": "Vimeo - Video Name",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "attributes.videoName"
+                    }
+                ],
+                "fingerprint": "1518620453323"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7580764/versions/0?apiLink=version"
+    }
+}

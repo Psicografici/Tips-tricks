@@ -1,0 +1,275 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2018-02-13 14:15:19",
+    "containerVersion": {
+        "path": "accounts/134236083/containers/7580764/versions/0",
+        "accountId": "134236083",
+        "containerId": "7580764",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/134236083/containers/7580764",
+            "accountId": "134236083",
+            "containerId": "7580764",
+            "name": "Template test",
+            "publicId": "GTM-5TTWT5X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1518530100718",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/134236083/containers/7580764/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "58",
+                "name": "GA - Event - Video HTML5",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "nonInteraction",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventCategory",
+                        "value": "{{eventCategory}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventAction",
+                        "value": "{{eventAction}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{eventLabel}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-1111111-1"
+                    }
+                ],
+                "fingerprint": "1518530438687",
+                "firingTriggerId": [
+                    "48"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "tagId": "59",
+                "name": "cHTML - Video HTML5",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n(function() {\n    var divisor = 25;\n    var videos_status = {};\n    function eventHandler(e) {\n        switch (e.type) {\n            \n        case 'timeupdate':\n            videos_status[e.target.id].current = Math.round(e.target.currentTime);\n            var pct = Math.floor(100 * videos_status[e.target.id].current / e.target.duration);\n            for (var j in videos_status[e.target.id]._progress_markers) {\n                if (pct >= j && j > videos_status[e.target.id].greatest_marker) {\n                    videos_status[e.target.id].greatest_marker = j;\n                }\n            }\n            if (videos_status[e.target.id].greatest_marker && !videos_status[e.target.id]._progress_markers[videos_status[e.target.id].greatest_marker]) {\n                videos_status[e.target.id]._progress_markers[videos_status[e.target.id].greatest_marker] = true;\n                dataLayer.push({\n                    'event': 'video',\n                    'eventCategory': 'HTML5 Video',\n                    'eventAction': videos_status[e.target.id].greatest_marker + '%',\n                    \n                    'eventLabel': decodeURIComponent(e.target.currentSrc.split('/')[e.target.currentSrc.split('/').length - 1])\n                });\n            }\n            break;\n        case 'play':\n            dataLayer.push({\n                'event': 'video',\n                'eventCategory': 'HTML5 Video',\n                'eventAction': 'Played video',\n                'eventLabel': decodeURIComponent(e.target.currentSrc.split('/')[e.target.currentSrc.split('/').length - 1])\n            });\n            break;\n        case 'pause':\n            dataLayer.push({\n                'event': 'video',\n                'eventCategory': 'HTML5 Video',\n                'eventAction': 'Paused video',\n                'eventLabel': decodeURIComponent(e.target.currentSrc.split('/')[e.target.currentSrc.split('/').length - 1]),\n                'eventValue': videos_status[e.target.id].current\n            });\n            break;\n            \n        case 'ended':\n            dataLayer.push({\n                'event': 'video',\n                'eventCategory': 'HTML5 Video',\n                'eventAction': '100%',\n                'eventLabel': decodeURIComponent(e.target.currentSrc.split('/')[e.target.currentSrc.split('/').length - 1])\n            });\n            break;\n        default:\n            break;\n        }\n    }\n     \n    var videos = document.getElementsByTagName('video');\n    for (var i = 0; i < videos.length; i++) {\n        \n        var videoTagId;\n        if (!videos[i].getAttribute('id')) {\n            videoTagId = 'html5_video_' + Math.random().toString(36).slice(2);\n            videos[i].setAttribute('id', videoTagId);\n        }\n        else {\n            videoTagId = videos[i].getAttribute('id');\n        }\n        videos_status[videoTagId] = {};\n        videos_status[videoTagId].greatest_marker = 0;\n        videos_status[videoTagId]._progress_markers = {};\n        for (j = 0; j < 100; j++) {\n            videos_status[videoTagId].progress_point = divisor * Math.floor(j / divisor);\n            videos_status[videoTagId]._progress_markers[videos_status[videoTagId].progress_point] = false;\n        }\n        videos_status[videoTagId].current = 0;\n        videos[i].addEventListener(\"play\", eventHandler, false);\n        videos[i].addEventListener(\"pause\", eventHandler, false);\n        videos[i].addEventListener(\"ended\", eventHandler, false);\n        videos[i].addEventListener(\"timeupdate\", eventHandler, false);\n        videos[i].addEventListener(\"ended\", eventHandler, false);\n    }\n})();\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1518530388946",
+                "firingTriggerId": [
+                    "49"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "48",
+                "name": "Interazione Video",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "video"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1518530522975"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "triggerId": "49",
+                "name": "Visualizzazione di Pagina - Video HTML5 Presente",
+                "type": "DOM_READY",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Video HTML5 Presente}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1518531251676"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "43",
+                "name": "Video HTML5 Presente",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function () {\nvar video = document.getElementsByTagName('video').length;\n\tif (video > 0) {\n      return true;\n    }\n\telse {\n      return false;\n    }\n}"
+                    }
+                ],
+                "fingerprint": "1518530506973"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "44",
+                "name": "eventAction",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventAction"
+                    }
+                ],
+                "fingerprint": "1518530452873"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "45",
+                "name": "eventCategory",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventCategory"
+                    }
+                ],
+                "fingerprint": "1518530461225"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "variableId": "46",
+                "name": "eventLabel",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "eventLabel"
+                    }
+                ],
+                "fingerprint": "1518530470210"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "134236083",
+                "containerId": "7580764",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/134236083/containers/7580764/versions/0?apiLink=version"
+    }
+}
